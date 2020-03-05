@@ -15,7 +15,7 @@ import java.util.Map;
  * @Description: ${todo}
  * @date 2018/6/7 10:51
  */
-public class TempleteTest {
+public class TemplateTest {
 
     public static void main(String[] args) {
         try {

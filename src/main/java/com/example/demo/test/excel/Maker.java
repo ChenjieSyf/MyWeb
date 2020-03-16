@@ -19,6 +19,8 @@ import java.util.Map;
 public class Maker {
     public static SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd");
 
+    public volatile static int all_index = 0;
+
     public static void writeExcel(Map<String, List<ExcelData>> dataMap) throws IOException {
         //创建工作簿
         XSSFWorkbook workBook = new XSSFWorkbook();
@@ -53,7 +55,7 @@ public class Maker {
 
     private static void makeCell(List<ExcelData> dataList, Sheet sheet) {
         for (int i = 0; i < dataList.size(); i++) {
-            Row row = sheet.createRow(i + 1);
+            Row row = sheet.createRow(all_index + 1);
             ExcelData excelData = dataList.get(i);
             Cell cell = row.createCell(0);
             cell.setCellValue(excelData.getAppName());
@@ -66,6 +68,7 @@ public class Maker {
 
             Cell cell3 = row.createCell(3);
             cell3.setCellValue(excelData.getOwnerName());
+            all_index++;
 
         }
     }
